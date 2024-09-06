@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RevitAddIns>
+ <AddIn Type="Application">
+       <Name>RevitTestModule</Name>
+       <FullClassName>RevitTestModule.Class1</FullClassName>
+       <Assembly>D:\Revit\RevitTestModule\RevitTestModule\bin\Debug\RevitTestModule.dll</Assembly>
+       <AddInId>6A004445-771B-4AE9-8F73-90EC18AE1082</AddInId>
+    <VendorId>ADSK</VendorId>
+    <VendorDescription>Autodesk, Inc, www.autodesk.com</VendorDescription>
+ </AddIn>
+</RevitAddIns>

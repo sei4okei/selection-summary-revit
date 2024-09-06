@@ -1,0 +1,66 @@
+﻿<UserControl x:Class="RevitTestModule.View.SummaryView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:RevitTestModule.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid Background="White">
+        <!-- ScrollViewer для прокрутки содержимого -->
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <ItemsControl ItemsSource="{Binding listGrouped}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <!-- Expander для каждой категории -->
+                        <Expander IsExpanded="False">
+                            <!-- HeaderTemplate для задания заголовка Expander -->
+                            <Expander.Header>
+                                <Grid>
+                                    <!-- Заголовок автоматически растягивается -->
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <!-- Название категории -->
+                                    <TextBlock Grid.Column="0" Text="{Binding CategoryName}" 
+                                               FontWeight="Bold" TextWrapping="Wrap" 
+                                               HorizontalAlignment="Left" />
+
+                                    <!-- Количество выделенных элементов в категории -->
+                                    <TextBlock Grid.Column="1" Text="{Binding ElementCount, StringFormat=( {0} элементов )}" 
+                                               FontStyle="Italic" TextWrapping="Wrap" 
+                                               HorizontalAlignment="Right" />
+                                </Grid>
+                            </Expander.Header>
+
+                            <!-- Содержимое Expander - параметры и их значения -->
+                            <ItemsControl ItemsSource="{Binding ParameterSums}">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <!-- Параметры и значения -->
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="Auto" />
+                                            </Grid.ColumnDefinitions>
+
+                                            <TextBlock Grid.Column="0" Text="{Binding Key}" 
+                                                       TextWrapping="Wrap" 
+                                                       HorizontalAlignment="Left" />
+
+                                            <TextBlock Grid.Column="1" Text="{Binding Value}" 
+                                                       TextWrapping="Wrap" 
+                                                       HorizontalAlignment="Right" />
+                                        </Grid>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </Expander>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
+    </Grid>
+</UserControl>
